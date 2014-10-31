@@ -1,0 +1,27 @@
+{
+    "name" : "watoki/blog",
+    "description" : "Demo application",
+    "minimum-stability" : "dev",
+    "license" : "proprietary",
+    "require": {
+        "php": ">=5.5",
+        "watoki/cqurator": "*"
+    },
+    "authors" : [
+        {
+            "name" : "Nikolas Martens",
+            "email" : "Nikolas.M@rtens.org"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "http://github.com/watoki/cqurator.git"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "blog\\": "src/blog"
+        }
+    }
+}

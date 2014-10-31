@@ -102,12 +102,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/watoki/cqurator.git",
-                "reference": "1e08f10044b45ee5ca3f4bf7aca06291d0e3dec1"
+                "reference": "439181c6e2e41cc387598570811d9e73725747f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/watoki/cqurator/zipball/1e08f10044b45ee5ca3f4bf7aca06291d0e3dec1",
-                "reference": "1e08f10044b45ee5ca3f4bf7aca06291d0e3dec1",
+                "url": "https://api.github.com/repos/watoki/cqurator/zipball/439181c6e2e41cc387598570811d9e73725747f1",
+                "reference": "439181c6e2e41cc387598570811d9e73725747f1",
                 "shasum": ""
             },
             "require": {
@@ -148,7 +148,7 @@
                 "source": "https://github.com/watoki/cqurator/tree/master",
                 "issues": "https://github.com/watoki/cqurator/issues"
             },
-            "time": "2014-10-31 17:33:47"
+            "time": "2014-10-31 19:58:39"
         },
         {
             "name": "watoki/curir",

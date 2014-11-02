@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1b98aefc5287cc0f5918494a9b86b65d",
+    "hash": "8ecd669805d3befd239afc564cb42939",
     "packages": [
         {
             "name": "nikic/php-parser",
@@ -95,60 +95,6 @@
                 "watoki"
             ],
             "time": "2014-10-31 09:57:09"
-        },
-        {
-            "name": "watoki/cqurator",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/watoki/cqurator.git",
-                "reference": "439181c6e2e41cc387598570811d9e73725747f1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/watoki/cqurator/zipball/439181c6e2e41cc387598570811d9e73725747f1",
-                "reference": "439181c6e2e41cc387598570811d9e73725747f1",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4",
-                "watoki/curir": "*",
-                "watoki/factory": "*",
-                "watoki/tempan": "*"
-            },
-            "require-dev": {
-                "watoki/scrut": "*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "watoki\\cqurator": "src/",
-                    "spec\\watoki\\cqurator": ""
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nikolas Martens",
-                    "email": "Nikolas.M@rtens.org",
-                    "homepage": "http://rtens.org"
-                }
-            ],
-            "description": "Administration interface based on the Command/Query Separation pattern",
-            "homepage": "http://github.com/watoki/cqurator",
-            "keywords": [
-                "admin",
-                "backend",
-                "cqrs",
-                "watoki"
-            ],
-            "support": {
-                "source": "https://github.com/watoki/cqurator/tree/master",
-                "issues": "https://github.com/watoki/cqurator/issues"
-            },
-            "time": "2014-10-31 19:58:39"
         },
         {
             "name": "watoki/curir",
@@ -346,6 +292,60 @@
                 "watoki"
             ],
             "time": "2014-10-04 09:10:52"
+        },
+        {
+            "name": "watoki/qrator",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/watoki/qrator.git",
+                "reference": "1042bf91ac68b063697f43590a8a75bc8b8b65dd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/watoki/qrator/zipball/1042bf91ac68b063697f43590a8a75bc8b8b65dd",
+                "reference": "1042bf91ac68b063697f43590a8a75bc8b8b65dd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4",
+                "watoki/curir": "*",
+                "watoki/factory": "*",
+                "watoki/tempan": "*"
+            },
+            "require-dev": {
+                "watoki/scrut": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "watoki\\qrator": "src/",
+                    "spec\\watoki\\qrator": ""
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nikolas Martens",
+                    "email": "Nikolas.M@rtens.org",
+                    "homepage": "http://rtens.org"
+                }
+            ],
+            "description": "Administration interface based using the Command Object Pattern",
+            "homepage": "http://github.com/watoki/qrator",
+            "keywords": [
+                "admin",
+                "backend",
+                "cqrs",
+                "watoki"
+            ],
+            "support": {
+                "source": "https://github.com/watoki/qrator/tree/master",
+                "issues": "https://github.com/watoki/qrator/issues"
+            },
+            "time": "2014-11-01 23:27:13"
         },
         {
             "name": "watoki/smokey",

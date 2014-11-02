@@ -7,7 +7,6 @@ use blog\model\commands\CreatePost;
 use blog\model\commands\CreateTag;
 use blog\model\commands\CreateUser;
 use blog\model\commands\DeletePost;
-use blog\model\commands\DeleteTag;
 use blog\model\commands\DeleteUser;
 use blog\model\commands\RemoveTag;
 use blog\model\commands\UpdatePost;
@@ -24,24 +23,24 @@ use blog\model\Tag;
 use blog\model\TagRepository;
 use blog\model\User;
 use blog\model\UserRepository;
-use watoki\cqurator\ActionDispatcher;
-use watoki\cqurator\form\fields\ArrayField;
-use watoki\cqurator\form\fields\SelectEntityField;
-use watoki\cqurator\representer\ActionGenerator;
-use watoki\cqurator\representer\GenericActionRepresenter;
-use watoki\cqurator\representer\GenericEntityRepresenter;
-use watoki\cqurator\representer\PropertyActionGenerator;
-use watoki\cqurator\RepresenterRegistry;
+use watoki\qrator\ActionDispatcher;
+use watoki\qrator\form\fields\ArrayField;
+use watoki\qrator\form\fields\SelectEntityField;
+use watoki\qrator\representer\ActionGenerator;
+use watoki\qrator\representer\GenericActionRepresenter;
+use watoki\qrator\representer\GenericEntityRepresenter;
+use watoki\qrator\representer\PropertyActionGenerator;
+use watoki\qrator\RepresenterRegistry;
 use watoki\factory\Factory;
 
 class Admin {
 
     /**
-     * @var \watoki\cqurator\RepresenterRegistry
+     * @var \watoki\qrator\RepresenterRegistry
      */
     private $registry;
     /**
-     * @var \watoki\cqurator\ActionDispatcher
+     * @var \watoki\qrator\ActionDispatcher
      */
     private $dispatcher;
 
@@ -122,7 +121,7 @@ class Admin {
                             return $post->title;
                         });
                         $this->dispatcher->addActionHandler(RemoveTag::class, PostRepository::class);
-                        $representer->addPropertyCommand('tags', new PropertyActionGenerator(RemoveTag::class, function ($id, $tagId) {
+                        $representer->addPropertyAction('tags', new PropertyActionGenerator(RemoveTag::class, function ($id, $tagId) {
                             return [
                                 'post' => $id,
                                 'tag' => $tagId
@@ -170,11 +169,11 @@ class Admin {
     private function representEntity($queries = [], $commands = [], $callback = null) {
         $representer = new GenericEntityRepresenter();
         foreach ($queries as $query => $handler) {
-            $representer->addQuery(new ActionGenerator($query));
+            $representer->addAction(new ActionGenerator($query));
             $this->dispatcher->addActionHandler($query, $handler);
         }
         foreach ($commands as $command => $handler) {
-            $representer->addCommand(new ActionGenerator($command));
+            $representer->addAction(new ActionGenerator($command));
             $this->dispatcher->addActionHandler($command, $handler);
         }
         if ($callback) {
@@ -192,7 +191,7 @@ class Admin {
     }
 
     /**
-     * @param \watoki\cqurator\Representer[] $representers
+     * @param \watoki\qrator\Representer[] $representers
      */
     private function register($representers) {
         foreach ($representers as $class => $representer) {

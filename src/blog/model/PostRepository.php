@@ -50,8 +50,6 @@ class PostRepository extends Repository {
         $blog['posts'][$command->id]['content'] = $command->content;
         $blog['posts'][$command->id]['updated'] = date('c');
         $this->write($blog);
-
-        return "Updated {$command->id}";
     }
 
     function deletePost(DeletePost $command) {

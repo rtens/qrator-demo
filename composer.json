@@ -1,11 +1,11 @@
 {
     "name" : "watoki/blog",
-    "description" : "Demo application",
+    "description" : "Demo application for qrator",
     "minimum-stability" : "dev",
     "license" : "proprietary",
     "require": {
         "php": ">=5.5",
-        "watoki/cqurator": "*"
+        "watoki/qrator": "*"
     },
     "authors" : [
         {
@@ -16,7 +16,7 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "http://github.com/watoki/cqurator.git"
+            "url": "http://github.com/watoki/qrator.git"
         }
     ],
     "autoload": {

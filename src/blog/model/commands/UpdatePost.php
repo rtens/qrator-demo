@@ -1,13 +1,9 @@
 <?php
 namespace blog\model\commands;
 
-use blog\curator\contracts\Command;
-use blog\curator\contracts\EntityAction;
-use blog\curator\Curator;
-use blog\curator\contracts\Preparable;
 use blog\model\Post;
 use blog\model\queries\ReadPost;
-use watoki\cqurator\form\PreFilling;
+use watoki\qrator\form\PreFilling;
 use watoki\smokey\Dispatcher;
 
 class UpdatePost implements PreFilling {

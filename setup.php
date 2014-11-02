@@ -12,6 +12,6 @@ if (!file_exists('build/composer.phar')) {
     system('cp src/blog/blog.json.dist src/blog/blog.json');
 }
 
-system("php build/composer.phar install");
+system("php build/composer.phar install --no-dev");
 
 require_once __DIR__ . "/bootstrap.php";

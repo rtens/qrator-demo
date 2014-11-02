@@ -142,6 +142,8 @@ class Admin {
                         $createPost->setField('tags',
                             new ArrayField('tags',
                                 new SelectEntityField('tag', new ListTags(), $tagRepresenter, $this->dispatcher)));
+
+                        $createPost->setFollowUpAction(new ActionGenerator(ListPosts::class));
                     }),
 
             RemoveTag::class => $this->representAction(

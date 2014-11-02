@@ -28,15 +28,18 @@ class PostRepository extends Repository {
 
     function createPost(CreatePost $command) {
         $blog = $this->read();
-        $blog['posts'][uniqid()] = [
+        $id = uniqid();
+        $row = [
             'author' => $command->author,
             'date' => date('c'),
             'title' => $command->title,
             'content' => $command->content,
             'tags' => $command->tags
         ];
+        $blog['posts'][$id] = $row;
+
         $this->write($blog);
-        return "Created: {$command->title}: {$command->content}";
+        return $this->inflate($id, $row);
     }
 
     function readPost(ReadPost $query) {

@@ -1,8 +1,6 @@
 <?php
 namespace blog\model;
 
-use blog\model\commands\CreateTag;
-
 class TagRepository extends Repository {
 
     public function listTags() {
@@ -12,9 +10,9 @@ class TagRepository extends Repository {
         }, array_keys($blog['tags']));
     }
 
-    public function createTag(CreateTag $command) {
+    public function createTag($name) {
         $blog = $this->read();
-        $blog['tags'][$command->name] = [];
+        $blog['tags'][$name] = [];
         $this->write($blog);
     }
 

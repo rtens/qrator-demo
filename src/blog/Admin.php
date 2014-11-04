@@ -4,7 +4,6 @@ namespace blog;
 use blog\model\Blog;
 use blog\model\commands\AddTag;
 use blog\model\commands\CreatePost;
-use blog\model\commands\CreateTag;
 use blog\model\commands\CreateUser;
 use blog\model\commands\DeletePost;
 use blog\model\commands\DeleteUser;
@@ -14,7 +13,6 @@ use blog\model\Post;
 use blog\model\PostRepository;
 use blog\model\queries\ListPosts;
 use blog\model\queries\ListTaggedPosts;
-use blog\model\queries\ListTags;
 use blog\model\queries\ListUsers;
 use blog\model\queries\ReadPost;
 use blog\model\queries\ReadUser;
@@ -23,14 +21,15 @@ use blog\model\Tag;
 use blog\model\TagRepository;
 use blog\model\User;
 use blog\model\UserRepository;
+use watoki\factory\Factory;
 use watoki\qrator\form\fields\ArrayField;
 use watoki\qrator\form\fields\SelectEntityField;
 use watoki\qrator\representer\ActionGenerator;
 use watoki\qrator\representer\GenericActionRepresenter;
 use watoki\qrator\representer\GenericEntityRepresenter;
+use watoki\qrator\representer\MethodActionRepresenter;
 use watoki\qrator\representer\PropertyActionGenerator;
 use watoki\qrator\RepresenterRegistry;
-use watoki\factory\Factory;
 
 class Admin {
 
@@ -55,6 +54,10 @@ class Admin {
 
     protected function registerRepresenters() {
 
+        $listTags = $this->deriveAction(TagRepository::class, 'listTags');
+
+        $createTag = $this->deriveAction(TagRepository::class, 'createTag');
+
         $this->registerEntities([
 
             null => [
@@ -66,10 +69,10 @@ class Admin {
                 [
                     ListPosts::class,
                     ListUsers::class,
-                    ListTags::class,
+                    $listTags->getClass(),
                     CreatePost::class,
                     CreateUser::class,
-                    CreateTag::class,
+                    $createTag->getClass(),
                 ]],
 
 
@@ -139,10 +142,6 @@ class Admin {
 
             ReadPost::class => PostRepository::class,
 
-            CreateTag::class => TagRepository::class,
-
-            ListTags::class => TagRepository::class,
-
             CreateUser::class => UserRepository::class,
 
             DeleteUser::class => UserRepository::class,
@@ -152,19 +151,19 @@ class Admin {
             ReadUser::class => UserRepository::class,
 
             AddTag::class => [TagRepository::class,
-                function (GenericActionRepresenter $remove) {
-                    $remove->setField('tag', new SelectEntityField('tag', new ListTags(), $this->registry));
+                function (GenericActionRepresenter $remove) use ($listTags) {
+                    $remove->setField('tag', new SelectEntityField('tag', $listTags->create(), $this->registry));
                 }],
 
             CreatePost::class => [PostRepository::class,
-                function (GenericActionRepresenter $createPost) {
+                function (GenericActionRepresenter $createPost) use ($listTags) {
 
                     $createPost->setField('author',
                         new SelectEntityField('author', new ListUsers(), $this->registry));
 
                     $createPost->setField('tags',
                         new ArrayField('tags',
-                            new SelectEntityField('tag', new ListTags(), $this->registry)));
+                            new SelectEntityField('tag', $listTags->create(), $this->registry)));
 
                     $createPost->setFollowUpAction(new ActionGenerator(ReadPost::class, function (Post $result) {
                         return ['id' => $result->id];
@@ -172,8 +171,8 @@ class Admin {
                 }],
 
             RemoveTag::class => [PostRepository::class,
-                function (GenericActionRepresenter $remove) {
-                    $remove->setField('tag', new SelectEntityField('tag', new ListTags(), $this->registry));
+                function (GenericActionRepresenter $remove)  use ($listTags) {
+                    $remove->setField('tag', new SelectEntityField('tag', $listTags->create(), $this->registry));
                 }],
 
             UpdatePost::class => [PostRepository::class,
@@ -224,5 +223,11 @@ class Admin {
             }
             $this->registry->register($this->representAction($class, $def[0], $def[1]));
         }
+    }
+
+    private function deriveAction($handler, $method) {
+        $action = new MethodActionRepresenter($handler, $method, $this->factory);
+        $this->registry->register($action);
+        return $action;
     }
 }

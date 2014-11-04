@@ -299,7 +299,7 @@
             "source": {
                 "type": "git",
                 "url": "/home/rtens/Dropbox/dev/php/watoki/qrator",
-                "reference": "6df141527e5cc3fbfc9e5db8b0a477a5973c1131"
+                "reference": "e112c12b1d80b8734e259ab2f80e4ff5b10fafc2"
             },
             "require": {
                 "php": ">=5.4",
@@ -335,7 +335,7 @@
                 "cqrs",
                 "watoki"
             ],
-            "time": "2014-11-04 17:23:14"
+            "time": "2014-11-04 20:58:44"
         },
         {
             "name": "watoki/smokey",
@@ -437,12 +437,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/watoki/tempan.git",
-                "reference": "ea8306de5dfff955a491b846662a885a6588b1fb"
+                "reference": "3f0d04178ab56c9b0f08963040bf473271a6226a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/watoki/tempan/zipball/ea8306de5dfff955a491b846662a885a6588b1fb",
-                "reference": "ea8306de5dfff955a491b846662a885a6588b1fb",
+                "url": "https://api.github.com/repos/watoki/tempan/zipball/3f0d04178ab56c9b0f08963040bf473271a6226a",
+                "reference": "3f0d04178ab56c9b0f08963040bf473271a6226a",
                 "shasum": ""
             },
             "require": {
@@ -479,7 +479,7 @@
                 "template animation",
                 "watoki"
             ],
-            "time": "2014-09-29 07:57:56"
+            "time": "2014-11-04 20:22:53"
         }
     ],
     "packages-dev": [],

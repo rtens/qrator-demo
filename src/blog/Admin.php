@@ -70,27 +70,17 @@ class Admin {
         $this->register(UpdatePostRepresenter::class);
 
         $this->registerActionHandlers([
-
             ShowBlog::class => function () {
                     return new Blog();
                 },
-
             DeletePost::class => PostRepository::class,
-
             ListPosts::class => PostRepository::class,
-
             ListTaggedPosts::class => PostRepository::class,
-
             ReadPost::class => PostRepository::class,
-
             CreateUser::class => UserRepository::class,
-
             DeleteUser::class => UserRepository::class,
-
             ListUsers::class => UserRepository::class,
-
             ReadUser::class => UserRepository::class,
-
         ]);
     }
 

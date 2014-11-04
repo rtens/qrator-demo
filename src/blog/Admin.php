@@ -1,15 +1,20 @@
 <?php
 namespace blog;
 
+use blog\admin\actions\AddTagRepresenter;
+use blog\admin\actions\CreatePostRepresenter;
+use blog\admin\actions\RemoveTagRepresenter;
+use blog\admin\actions\UpdatePostRepresenter;
+use blog\admin\entities\BlogRepresenter;
+use blog\admin\entities\DateTimeRepresenter;
+use blog\admin\entities\PostRepresenter;
+use blog\admin\entities\RootRepresenter;
+use blog\admin\entities\TagRepresenter;
+use blog\admin\entities\UserRepresenter;
 use blog\model\Blog;
-use blog\model\commands\AddTag;
-use blog\model\commands\CreatePost;
 use blog\model\commands\CreateUser;
 use blog\model\commands\DeletePost;
 use blog\model\commands\DeleteUser;
-use blog\model\commands\RemoveTag;
-use blog\model\commands\UpdatePost;
-use blog\model\Post;
 use blog\model\PostRepository;
 use blog\model\queries\ListPosts;
 use blog\model\queries\ListTaggedPosts;
@@ -17,18 +22,11 @@ use blog\model\queries\ListUsers;
 use blog\model\queries\ReadPost;
 use blog\model\queries\ReadUser;
 use blog\model\queries\ShowBlog;
-use blog\model\Tag;
 use blog\model\TagRepository;
-use blog\model\User;
 use blog\model\UserRepository;
 use watoki\factory\Factory;
-use watoki\qrator\form\fields\ArrayField;
-use watoki\qrator\form\fields\SelectEntityField;
-use watoki\qrator\representer\ActionGenerator;
-use watoki\qrator\representer\GenericActionRepresenter;
-use watoki\qrator\representer\GenericEntityRepresenter;
+use watoki\qrator\representer\generic\GenericActionRepresenter;
 use watoki\qrator\representer\MethodActionRepresenter;
-use watoki\qrator\representer\PropertyActionGenerator;
 use watoki\qrator\RepresenterRegistry;
 
 class Admin {
@@ -54,83 +52,24 @@ class Admin {
 
     protected function registerRepresenters() {
 
-        $listTags = $this->deriveAction(TagRepository::class, 'listTags');
-
-        $createTag = $this->deriveAction(TagRepository::class, 'createTag');
-
-        $this->registerEntities([
-
-            null => [
-                [
-                    ShowBlog::class
-                ]],
-
-            Blog::class => [
-                [
-                    ListPosts::class,
-                    ListUsers::class,
-                    $listTags->getClass(),
-                    CreatePost::class,
-                    CreateUser::class,
-                    $createTag->getClass(),
-                ]],
-
-
-            Post::class => [
-                [
-                    ReadPost::class,
-                    AddTag::class,
-                    DeletePost::class,
-                    UpdatePost::class,
-                ],
-                function (
-                    GenericEntityRepresenter $representer) {
-                    $representer->setStringifier(function (Post $post) {
-                        return $post->title;
-                    });
-                    $representer->addPropertyAction('tags', new PropertyActionGenerator(RemoveTag::class, function ($id, $tagId) {
-                        return [
-                            'post' => $id,
-                            'tag' => $tagId
-                        ];
-                    }));
-                }],
-
-
-            User::class => [
-                [
-                    ReadUser::class,
-                    DeleteUser::class,
-                ],
-                function (GenericEntityRepresenter $user) {
-                    $user->setStringifier(function (User $user) {
-                        return $user->name;
-                    });
-                    $user->setListAction(new ListUsers());
-                }],
-
-
-            Tag::class => [
-                [
-                    ListTaggedPosts::class,
-                ],
-                function (GenericEntityRepresenter $tag) use ($listTags) {
-                    $tag->setListAction($listTags->create());
-                }
-            ],
-
-
-            \DateTime::class => [
-                [],
-                function (GenericEntityRepresenter $representer) {
-                    $representer->setStringifier(function (\DateTime $dateTime) {
-                        return $dateTime->format('Y-m-d H:i:s');
-                    });
-                }
-            ],
+        $this->deriveActions(TagRepository::class, [
+            'createTag',
+            'listTags'
         ]);
 
-        $this->registerActions([
+        $this->register(PostRepresenter::class);
+        $this->register(RootRepresenter::class);
+        $this->register(BlogRepresenter::class);
+        $this->register(UserRepresenter::class);
+        $this->register(TagRepresenter::class);
+        $this->register(DateTimeRepresenter::class);
+
+        $this->register(AddTagRepresenter::class);
+        $this->register(CreatePostRepresenter::class);
+        $this->register(RemoveTagRepresenter::class);
+        $this->register(UpdatePostRepresenter::class);
+
+        $this->registerActionHandlers([
 
             ShowBlog::class => function () {
                     return new Blog();
@@ -152,84 +91,26 @@ class Admin {
 
             ReadUser::class => UserRepository::class,
 
-            AddTag::class => [TagRepository::class,
-                function (GenericActionRepresenter $remove) use ($listTags) {
-                    $remove->setField('tag', new SelectEntityField('tag', Tag::class, $this->registry));
-                }],
-
-            CreatePost::class => [PostRepository::class,
-                function (GenericActionRepresenter $createPost) use ($listTags) {
-
-                    $createPost->setField('author',
-                        new SelectEntityField('author', User::class, $this->registry));
-
-                    $createPost->setField('tags',
-                        new ArrayField('tags',
-                            new SelectEntityField('tag', Tag::class, $this->registry)));
-
-                    $createPost->setFollowUpAction(new ActionGenerator(ReadPost::class, function (Post $result) {
-                        return ['id' => $result->id];
-                    }));
-                }],
-
-            RemoveTag::class => [PostRepository::class,
-                function (GenericActionRepresenter $remove)  use ($listTags) {
-                    $remove->setField('tag', new SelectEntityField('tag', Tag::class, $this->registry));
-                }],
-
-            UpdatePost::class => [PostRepository::class,
-                function (GenericActionRepresenter $representer) {
-                    $representer->setPreFiller(function (UpdatePost $action) {
-                        $readPost = new ReadPost();
-                        $readPost->id = $action->id;
-
-                        $post = $this->registry->getActionRepresenter($readPost)->execute($readPost);
-
-                        $action->title = $post->title;
-                        $action->content = $post->content;
-                    });
-                }],
         ]);
     }
 
-    private function representEntity($class, $actions = [], $callback = null) {
-        $representer = new GenericEntityRepresenter($class);
-        foreach ($actions as $query) {
-            $representer->addAction(new ActionGenerator($query));
-        }
-        if ($callback) {
-            call_user_func($callback, $representer);
-        }
-        return $representer;
-    }
+    private function registerActionHandlers($array) {
+        foreach ($array as $class => $handler) {
 
-    private function representAction($class, $handler, $callback = null) {
-        $representer = new GenericActionRepresenter($class, $this->factory);
-        $representer->setHandler($handler);
-        if ($callback) {
-            call_user_func($callback, $representer);
-        }
-        return $representer;
-    }
+            $representer = new GenericActionRepresenter($class, $this->factory);
+            $representer->setHandler($handler);
 
-    private function registerEntities($array) {
-        foreach ($array as $class => $def) {
-            $this->registry->register($this->representEntity($class, $def[0], isset($def[1]) ? $def[1] : null));
+            $this->registry->register($representer);
         }
     }
 
-    private function registerActions($array) {
-        foreach ($array as $class => $def) {
-            if (!is_array($def)) {
-                $def = [$def, null];
-            }
-            $this->registry->register($this->representAction($class, $def[0], $def[1]));
+    private function deriveActions($handler, $methods) {
+        foreach ($methods as $method) {
+            $this->registry->register(new MethodActionRepresenter($handler, $method, $this->factory));
         }
     }
 
-    private function deriveAction($handler, $method) {
-        $action = new MethodActionRepresenter($handler, $method, $this->factory);
-        $this->registry->register($action);
-        return $action;
+    private function register($class) {
+        $this->registry->register($this->factory->getInstance($class));
     }
 }

@@ -3,7 +3,7 @@ namespace blog\model\commands;
 
 class UpdatePost {
 
-    /** @var string|\blog\model\Post-ID */
+    /** @var \blog\model\Post-ID|string */
     public $id;
 
     /** @var string */

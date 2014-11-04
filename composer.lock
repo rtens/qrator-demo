@@ -298,8 +298,8 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "/home/rtens/Dropbox/dev/php/watoki/qrator/",
-                "reference": "18965b358e03f1c0b7ef8af8658981f02aff8078"
+                "url": "/home/rtens/Dropbox/dev/php/watoki/qrator",
+                "reference": "6df141527e5cc3fbfc9e5db8b0a477a5973c1131"
             },
             "require": {
                 "php": ">=5.4",
@@ -335,7 +335,7 @@
                 "cqrs",
                 "watoki"
             ],
-            "time": "2014-11-04 10:16:23"
+            "time": "2014-11-04 17:23:14"
         },
         {
             "name": "watoki/smokey",

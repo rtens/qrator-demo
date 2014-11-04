@@ -3,7 +3,7 @@ namespace blog\model\commands;
 
 class DeleteUser {
 
-    /** @var string|\blog\model\User-ID */
+    /** @var \blog\model\User-ID|string */
     public $id;
 
     public function setId($id) {

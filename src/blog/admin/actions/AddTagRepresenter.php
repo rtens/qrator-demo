@@ -3,8 +3,6 @@ namespace blog\admin\actions;
 
 use blog\model\commands\AddTag;
 use blog\model\PostRepository;
-use blog\model\Tag;
-use watoki\qrator\form\fields\SelectEntityField;
 use watoki\qrator\representer\basic\BasicActionRepresenter;
 
 class AddTagRepresenter extends BasicActionRepresenter {
@@ -25,14 +23,5 @@ class AddTagRepresenter extends BasicActionRepresenter {
      */
     public function getClass() {
         return AddTag::class;
-    }
-
-    public function getField($name) {
-        switch ($name) {
-            case 'tag':
-                return new SelectEntityField($name, Tag::class, $this->registry);
-            default:
-                return parent::getField($name);
-        }
     }
 }

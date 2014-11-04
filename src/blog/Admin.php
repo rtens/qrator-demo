@@ -85,7 +85,7 @@ class Admin {
 
     private function registerActionHandlers($array) {
         foreach ($array as $class => $handler) {
-            $representer = new GenericActionRepresenter($class, $this->factory);
+            $representer = new GenericActionRepresenter($class, $this->factory, $this->registry);
             $representer->setHandler($handler);
 
             $this->registry->register($representer);

@@ -3,7 +3,7 @@ namespace blog\model\commands;
 
 class CreatePost {
 
-    /** @var string|\blog\model\User-ID */
+    /** @var \blog\model\User-ID|string */
     public $author;
 
     /** @var string */

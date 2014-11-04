@@ -28,6 +28,11 @@ class UserRepository extends Repository {
 
     public function deleteUser(DeleteUser $command) {
         $blog = $this->read();
+        foreach ($blog['posts'] as $post) {
+            if ($post['author'] == $command->id) {
+                throw new \Exception("Cannot delete user who is author of post '{$post['title']}'.");
+            }
+        }
         unset($blog['users'][$command->id]);
         $this->write($blog);
         return "User deleted";

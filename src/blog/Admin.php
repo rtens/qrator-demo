@@ -26,7 +26,6 @@ use blog\model\TagRepository;
 use blog\model\UserRepository;
 use watoki\factory\Factory;
 use watoki\qrator\representer\generic\GenericActionRepresenter;
-use watoki\qrator\representer\MethodActionRepresenter;
 use watoki\qrator\RepresenterRegistry;
 
 class Admin {
@@ -52,7 +51,7 @@ class Admin {
 
     protected function registerRepresenters() {
 
-        $this->deriveActions(TagRepository::class, [
+        $this->registry->registerMethods(TagRepository::class, [
             'createTag',
             'listTags'
         ]);
@@ -86,17 +85,10 @@ class Admin {
 
     private function registerActionHandlers($array) {
         foreach ($array as $class => $handler) {
-
             $representer = new GenericActionRepresenter($class, $this->factory);
             $representer->setHandler($handler);
 
             $this->registry->register($representer);
-        }
-    }
-
-    private function deriveActions($handler, $methods) {
-        foreach ($methods as $method) {
-            $this->registry->register(new MethodActionRepresenter($handler, $method, $this->factory));
         }
     }
 

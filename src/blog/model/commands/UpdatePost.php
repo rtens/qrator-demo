@@ -1,12 +1,7 @@
 <?php
 namespace blog\model\commands;
 
-use blog\model\Post;
-use blog\model\queries\ReadPost;
-use watoki\qrator\form\PreFilling;
-use watoki\smokey\Dispatcher;
-
-class UpdatePost implements PreFilling {
+class UpdatePost {
 
     /** @var string|\blog\model\Post-ID */
     public $id;
@@ -21,16 +16,4 @@ class UpdatePost implements PreFilling {
         $this->id = $id;
     }
 
-    /**
-     * @param Dispatcher $dispatcher
-     * @return void
-     */
-    public function preFill(Dispatcher $dispatcher) {
-        $readPost = new ReadPost();
-        $readPost->id = $this->id;
-        $dispatcher->fire($readPost)->onSuccess(function (Post $post) {
-            $this->title = $post->title;
-            $this->content = $post->content;
-        });
-    }
 }

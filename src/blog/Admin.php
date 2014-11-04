@@ -106,6 +106,7 @@ class Admin {
                     $user->setStringifier(function (User $user) {
                         return $user->name;
                     });
+                    $user->setListAction(new ListUsers());
                 }],
 
 
@@ -113,7 +114,8 @@ class Admin {
                 [
                     ListTaggedPosts::class,
                 ],
-                function (GenericEntityRepresenter $tag) {
+                function (GenericEntityRepresenter $tag) use ($listTags) {
+                    $tag->setListAction($listTags->create());
                 }
             ],
 
@@ -152,18 +154,18 @@ class Admin {
 
             AddTag::class => [TagRepository::class,
                 function (GenericActionRepresenter $remove) use ($listTags) {
-                    $remove->setField('tag', new SelectEntityField('tag', $listTags->create(), $this->registry));
+                    $remove->setField('tag', new SelectEntityField('tag', Tag::class, $this->registry));
                 }],
 
             CreatePost::class => [PostRepository::class,
                 function (GenericActionRepresenter $createPost) use ($listTags) {
 
                     $createPost->setField('author',
-                        new SelectEntityField('author', new ListUsers(), $this->registry));
+                        new SelectEntityField('author', User::class, $this->registry));
 
                     $createPost->setField('tags',
                         new ArrayField('tags',
-                            new SelectEntityField('tag', $listTags->create(), $this->registry)));
+                            new SelectEntityField('tag', Tag::class, $this->registry)));
 
                     $createPost->setFollowUpAction(new ActionGenerator(ReadPost::class, function (Post $result) {
                         return ['id' => $result->id];
@@ -172,7 +174,7 @@ class Admin {
 
             RemoveTag::class => [PostRepository::class,
                 function (GenericActionRepresenter $remove)  use ($listTags) {
-                    $remove->setField('tag', new SelectEntityField('tag', $listTags->create(), $this->registry));
+                    $remove->setField('tag', new SelectEntityField('tag', Tag::class, $this->registry));
                 }],
 
             UpdatePost::class => [PostRepository::class,

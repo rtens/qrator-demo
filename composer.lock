@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "7fbdb79a082f2ea899d7edbb37ab659d8f391708"
+                "reference": "a8ffc6fcfcbae268656c8acf1298e378ac1ee5f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/7fbdb79a082f2ea899d7edbb37ab659d8f391708",
-                "reference": "7fbdb79a082f2ea899d7edbb37ab659d8f391708",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/a8ffc6fcfcbae268656c8acf1298e378ac1ee5f1",
+                "reference": "a8ffc6fcfcbae268656c8acf1298e378ac1ee5f1",
                 "shasum": ""
             },
             "require": {
@@ -49,7 +49,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2014-11-03 15:16:15"
+            "time": "2014-11-04 22:12:46"
         },
         {
             "name": "watoki/collections",
@@ -57,12 +57,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/watoki/collections.git",
-                "reference": "93cf19ebbe63ba96464d9f2d5f96cddf97374363"
+                "reference": "967643e9943e69e0efa561cb036517b223942441"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/watoki/collections/zipball/93cf19ebbe63ba96464d9f2d5f96cddf97374363",
-                "reference": "93cf19ebbe63ba96464d9f2d5f96cddf97374363",
+                "url": "https://api.github.com/repos/watoki/collections/zipball/967643e9943e69e0efa561cb036517b223942441",
+                "reference": "967643e9943e69e0efa561cb036517b223942441",
                 "shasum": ""
             },
             "require": {
@@ -94,7 +94,7 @@
                 "data structure",
                 "watoki"
             ],
-            "time": "2014-10-31 09:57:09"
+            "time": "2014-11-05 07:11:22"
         },
         {
             "name": "watoki/curir",
@@ -298,8 +298,14 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "/home/rtens/Dropbox/dev/php/watoki/qrator",
-                "reference": "e112c12b1d80b8734e259ab2f80e4ff5b10fafc2"
+                "url": "https://github.com/watoki/qrator.git",
+                "reference": "52416a110999ba51a3dc22692217d9fda210a450"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/watoki/qrator/zipball/52416a110999ba51a3dc22692217d9fda210a450",
+                "reference": "52416a110999ba51a3dc22692217d9fda210a450",
+                "shasum": ""
             },
             "require": {
                 "php": ">=5.4",
@@ -335,7 +341,11 @@
                 "cqrs",
                 "watoki"
             ],
-            "time": "2014-11-04 20:58:44"
+            "support": {
+                "source": "https://github.com/watoki/qrator/tree/master",
+                "issues": "https://github.com/watoki/qrator/issues"
+            },
+            "time": "2014-11-04 21:04:48"
         },
         {
             "name": "watoki/smokey",
@@ -437,12 +447,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/watoki/tempan.git",
-                "reference": "3f0d04178ab56c9b0f08963040bf473271a6226a"
+                "reference": "60a8b27461fe5d98f5449c73d327929d14edcc4e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/watoki/tempan/zipball/3f0d04178ab56c9b0f08963040bf473271a6226a",
-                "reference": "3f0d04178ab56c9b0f08963040bf473271a6226a",
+                "url": "https://api.github.com/repos/watoki/tempan/zipball/60a8b27461fe5d98f5449c73d327929d14edcc4e",
+                "reference": "60a8b27461fe5d98f5449c73d327929d14edcc4e",
                 "shasum": ""
             },
             "require": {
@@ -479,7 +489,7 @@
                 "template animation",
                 "watoki"
             ],
-            "time": "2014-11-04 20:22:53"
+            "time": "2014-11-05 06:32:39"
         }
     ],
     "packages-dev": [],

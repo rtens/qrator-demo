@@ -299,12 +299,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/watoki/qrator.git",
-                "reference": "540b4ca5827a178fc2b0a14f0a66b68a395e16e7"
+                "reference": "7badfe00d88524dc78c00dd218e9aca78c38ac87"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/watoki/qrator/zipball/540b4ca5827a178fc2b0a14f0a66b68a395e16e7",
-                "reference": "540b4ca5827a178fc2b0a14f0a66b68a395e16e7",
+                "url": "https://api.github.com/repos/watoki/qrator/zipball/7badfe00d88524dc78c00dd218e9aca78c38ac87",
+                "reference": "7badfe00d88524dc78c00dd218e9aca78c38ac87",
                 "shasum": ""
             },
             "require": {
@@ -345,7 +345,7 @@
                 "source": "https://github.com/watoki/qrator/tree/master",
                 "issues": "https://github.com/watoki/qrator/issues"
             },
-            "time": "2014-11-05 07:34:28"
+            "time": "2014-11-05 14:32:11"
         },
         {
             "name": "watoki/smokey",

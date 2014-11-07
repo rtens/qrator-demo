@@ -26,13 +26,16 @@ class UpdatePostRepresenter extends BasicActionRepresenter {
         return UpdatePost::class;
     }
 
-    public function preFill($action) {
+    /**
+     * @param \watoki\qrator\form\Field[] $fields
+     */
+    public function preFill($fields) {
         $readPost = new ReadPost();
-        $readPost->id = $action->id;
+        $readPost->id = $fields['id']->getValue();
 
+        /** @var \blog\model\Post $post */
         $post = $this->registry->getActionRepresenter($readPost)->execute($readPost);
-
-        $action->title = $post->title;
-        $action->content = $post->content;
+        $fields['title']->setValue($post->title);
+        $fields['content']->setValue($post->content);
     }
 }

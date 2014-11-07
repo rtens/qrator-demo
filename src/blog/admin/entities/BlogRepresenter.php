@@ -7,6 +7,7 @@ use blog\model\commands\CreateUser;
 use blog\model\queries\ListPosts;
 use blog\model\queries\ListUsers;
 use blog\model\TagRepository;
+use watoki\qrator\representer\ActionLink;
 use watoki\qrator\representer\basic\BasicEntityRepresenter;
 use watoki\qrator\representer\MethodActionRepresenter;
 
@@ -19,14 +20,14 @@ class BlogRepresenter extends BasicEntityRepresenter {
         return Blog::class;
     }
 
-    public function getActions() {
-        return $this->wrapInActionGenerators([
-            ListPosts::class,
-            ListUsers::class,
-            MethodActionRepresenter::asClass(TagRepository::class, 'listTags'),
-            CreatePost::class,
-            CreateUser::class,
-            MethodActionRepresenter::asClass(TagRepository::class, 'createTag'),
-        ]);
+    public function getActions($entity) {
+        return [
+            new ActionLink(ListPosts::class),
+            new ActionLink(ListUsers::class),
+            new ActionLink(MethodActionRepresenter::asClass(TagRepository::class, 'listTags')),
+            new ActionLink(CreatePost::class),
+            new ActionLink(CreateUser::class),
+            new ActionLink(MethodActionRepresenter::asClass(TagRepository::class, 'createTag')),
+        ];
     }
 }

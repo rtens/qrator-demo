@@ -5,7 +5,7 @@ use blog\model\commands\CreatePost;
 use blog\model\Post;
 use blog\model\PostRepository;
 use blog\model\queries\ReadPost;
-use watoki\qrator\representer\ActionGenerator;
+use watoki\qrator\representer\ActionLink;
 use watoki\qrator\representer\basic\BasicActionRepresenter;
 
 class CreatePostRepresenter extends BasicActionRepresenter {
@@ -21,10 +21,12 @@ class CreatePostRepresenter extends BasicActionRepresenter {
         return $this->executeHandler(PostRepository::class, $object);
     }
 
-    public function getFollowUpAction() {
-        return new ActionGenerator(ReadPost::class, function (Post $result) {
-            return ['id' => $result->id];
-        });
+    /**
+     * @param Post $result
+     * @return ActionLink
+     */
+    public function getFollowUpAction($result) {
+        return new ActionLink(ReadPost::class, ['id' => $result->id]);
     }
 
     /**

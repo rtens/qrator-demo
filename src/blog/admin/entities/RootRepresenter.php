@@ -2,6 +2,7 @@
 namespace blog\admin\entities;
 
 use blog\model\queries\ShowBlog;
+use watoki\qrator\representer\ActionLink;
 use watoki\qrator\representer\basic\BasicEntityRepresenter;
 use watoki\qrator\RootEntity;
 
@@ -18,9 +19,9 @@ class RootRepresenter extends BasicEntityRepresenter {
         return 'Welcome to Qrator';
     }
 
-    public function getActions() {
-        return $this->wrapInActionGenerators([
-            ShowBlog::class
-        ]);
+    public function getActions($entity) {
+        return [
+            new ActionLink(ShowBlog::class)
+        ];
     }
 }

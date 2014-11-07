@@ -6,9 +6,10 @@ use blog\model\commands\DeletePost;
 use blog\model\commands\RemoveTag;
 use blog\model\commands\UpdatePost;
 use blog\model\Post;
+use blog\model\queries\ListPosts;
 use blog\model\queries\ReadPost;
+use watoki\qrator\representer\ActionLink;
 use watoki\qrator\representer\basic\BasicEntityRepresenter;
-use watoki\qrator\representer\PropertyActionGenerator;
 
 class PostRepresenter extends BasicEntityRepresenter {
 
@@ -20,31 +21,34 @@ class PostRepresenter extends BasicEntityRepresenter {
     }
 
     /**
-     * @return array|\watoki\qrator\representer\ActionGenerator[]
+     * @param Post $post
+     * @return array|\object[]
      */
-    public function getActions() {
-        return $this->wrapInActionGenerators([
-            ReadPost::class,
-            AddTag::class,
-            DeletePost::class,
-            UpdatePost::class,
-        ]);
+    public function getActions($post) {
+        $args = ['id' => $post->id];
+
+        return [
+            new ActionLink(ReadPost::class, $args),
+            new ActionLink(AddTag::class, $args),
+            new ActionLink(DeletePost::class, $args),
+            new ActionLink(UpdatePost::class, $args),
+        ];
     }
 
     /**
+     * @param object $entity
      * @param string $property
-     * @return array|\watoki\qrator\representer\ActionGenerator[]
+     * @param mixed|\blog\model\Tag $value
+     * @return array|\watoki\qrator\representer\ActionLink[]
      */
-    public function getPropertyActions($property) {
+    public function getPropertyActions($entity, $property, $value) {
         switch ($property) {
             case 'tags':
                 return [
-                    new PropertyActionGenerator(RemoveTag::class, function ($id, $tagId) {
-                        return [
-                            'post' => $id,
-                            'tag' => $tagId
-                        ];
-                    })
+                    new ActionLink(RemoveTag::class, [
+                        'post' => $entity->id,
+                        'tag' => $value->id
+                    ])
                 ];
             default:
                 return [];
@@ -57,6 +61,10 @@ class PostRepresenter extends BasicEntityRepresenter {
      */
     public function toString($object) {
         return $object->title;
+    }
+
+    public function getListAction() {
+        return new ActionLink(ListPosts::class);
     }
 
 }

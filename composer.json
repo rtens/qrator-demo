@@ -16,7 +16,7 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "http://github.com/watoki/qrator.git"
+            "url": "/home/rtens/Dropbox/dev/php/watoki/qrator"
         }
     ],
     "autoload": {

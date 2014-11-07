@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "17c2eff1b217d5aa30966b5a500d5b6d",
+    "hash": "8ecd669805d3befd239afc564cb42939",
     "packages": [
         {
             "name": "nikic/php-parser",
@@ -298,8 +298,14 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "/home/rtens/Dropbox/dev/php/watoki/qrator",
+                "url": "https://github.com/watoki/qrator.git",
                 "reference": "8b3349d0db915541713106e515cad1ccc2f29351"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/watoki/qrator/zipball/8b3349d0db915541713106e515cad1ccc2f29351",
+                "reference": "8b3349d0db915541713106e515cad1ccc2f29351",
+                "shasum": ""
             },
             "require": {
                 "php": ">=5.4",
@@ -335,6 +341,10 @@
                 "cqrs",
                 "watoki"
             ],
+            "support": {
+                "source": "https://github.com/watoki/qrator/tree/master",
+                "issues": "https://github.com/watoki/qrator/issues"
+            },
             "time": "2014-11-07 16:50:49"
         },
         {

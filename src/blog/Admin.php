@@ -71,12 +71,16 @@ class Admin {
             ShowBlog::class => function () {
                     return new Blog();
                 },
-            DeletePost::class => PostRepository::class,
+            DeletePost::class => [PostRepository::class, function (GenericActionRepresenter $representer) {
+                $representer->setRequireConfirmation();
+            }],
             ListPosts::class => PostRepository::class,
             ListTaggedPosts::class => PostRepository::class,
             ReadPost::class => PostRepository::class,
             CreateUser::class => UserRepository::class,
-            DeleteUser::class => UserRepository::class,
+            DeleteUser::class => [UserRepository::class, function (GenericActionRepresenter $representer) {
+                $representer->setRequireConfirmation();
+            }],
             ListUsers::class => UserRepository::class,
             ReadUser::class => UserRepository::class,
         ]);
@@ -84,8 +88,13 @@ class Admin {
 
     private function registerActionHandlers($array) {
         foreach ($array as $class => $handler) {
+            $callback = function () {};
+            if (is_array($handler)) {
+                list($handler, $callback) = $handler;
+            }
             $representer = new GenericActionRepresenter($class, $this->factory, $this->registry);
             $representer->setHandler($handler);
+            $callback($representer);
 
             $this->registry->register($representer);
         }

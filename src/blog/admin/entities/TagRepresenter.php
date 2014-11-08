@@ -17,9 +17,13 @@ class TagRepresenter extends BasicEntityRepresenter {
         return Tag::class;
     }
 
+    /**
+     * @param Tag $entity
+     * @return array|\watoki\qrator\representer\ActionLink[]
+     */
     public function getActions($entity) {
         return [
-            new ActionLink(ListTaggedPosts::class),
+            new ActionLink(ListTaggedPosts::class, ['id' => $entity->id]),
         ];
     }
 

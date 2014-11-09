@@ -9,12 +9,14 @@ class UserRepository extends Repository {
 
     public function createUser(CreateUser $query) {
         $blog = $this->read();
-        $blog['users'][uniqid()] = [
+        $id = uniqid();
+        $row = [
             'name' => $query->name,
             'email' => $query->email
         ];
+        $blog['users'][$id] = $row;
         $this->write($blog);
-        return "User created";
+        return $this->inflate($id, $row);
     }
 
     public function listUsers() {

@@ -2,6 +2,7 @@
 namespace blog\admin\entities;
 
 use blog\model\commands\AddTag;
+use blog\model\commands\ChangeDate;
 use blog\model\commands\DeletePost;
 use blog\model\commands\RemoveTag;
 use blog\model\commands\UpdatePost;
@@ -32,6 +33,7 @@ class PostRepresenter extends BasicEntityRepresenter {
             new ActionLink(AddTag::class, $args),
             new ActionLink(DeletePost::class, $args),
             new ActionLink(UpdatePost::class, $args),
+            new ActionLink(ChangeDate::class, $args),
         ];
     }
 

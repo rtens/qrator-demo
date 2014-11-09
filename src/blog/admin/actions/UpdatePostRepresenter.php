@@ -4,7 +4,7 @@ namespace blog\admin\actions;
 use blog\model\commands\UpdatePost;
 use blog\model\PostRepository;
 use blog\model\queries\ReadPost;
-use watoki\qrator\form\fields\HtmlEditorField;
+use watoki\qrator\form\fields\HtmlTextField;
 use watoki\qrator\representer\basic\BasicActionRepresenter;
 use watoki\qrator\representer\Property;
 
@@ -44,7 +44,7 @@ class UpdatePostRepresenter extends BasicActionRepresenter {
     protected function getField(Property $property) {
         switch ($property->name()) {
             case 'content':
-                return new HtmlEditorField('content');
+                return new HtmlTextField('content');
             default:
                 return parent::getField($property);
         }

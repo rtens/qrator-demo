@@ -2,6 +2,7 @@
 namespace blog\model;
 
 use blog\model\commands\AddTag;
+use blog\model\commands\ChangeDate;
 use blog\model\commands\CreatePost;
 use blog\model\commands\DeletePost;
 use blog\model\commands\RemoveTag;
@@ -52,6 +53,12 @@ class PostRepository extends Repository {
         $blog['posts'][$command->id]['title'] = $command->title;
         $blog['posts'][$command->id]['content'] = $command->content;
         $blog['posts'][$command->id]['updated'] = date('c');
+        $this->write($blog);
+    }
+
+    function changeDate(ChangeDate $command) {
+        $blog = $this->read();
+        $blog['posts'][$command->id]['date'] = $command->date->format('c');
         $this->write($blog);
     }
 

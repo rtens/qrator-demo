@@ -2,6 +2,7 @@
 namespace blog;
 
 use blog\admin\actions\AddTagRepresenter;
+use blog\admin\actions\ChangeDateRepresenter;
 use blog\admin\actions\CreatePostRepresenter;
 use blog\admin\actions\RemoveTagRepresenter;
 use blog\admin\actions\UpdatePostRepresenter;
@@ -66,6 +67,7 @@ class Admin {
         $this->register(CreatePostRepresenter::class);
         $this->register(RemoveTagRepresenter::class);
         $this->register(UpdatePostRepresenter::class);
+        $this->register(ChangeDateRepresenter::class);
 
         $this->registerActionHandlers([
             ShowBlog::class => function () {

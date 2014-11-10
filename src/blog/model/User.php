@@ -21,4 +21,8 @@ class User {
     public function getId() {
         return $this->id;
     }
+
+    public function isEmailVisible() {
+        return true;
+    }
 }

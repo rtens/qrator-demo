@@ -102,12 +102,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/watoki/curir.git",
-                "reference": "29822a4cbbdb1d48abfb4b1c033bc2fdfa91cd1b"
+                "reference": "6d48bc3209c61d3d9a962c469f0f50b803dd2eb4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/watoki/curir/zipball/29822a4cbbdb1d48abfb4b1c033bc2fdfa91cd1b",
-                "reference": "29822a4cbbdb1d48abfb4b1c033bc2fdfa91cd1b",
+                "url": "https://api.github.com/repos/watoki/curir/zipball/6d48bc3209c61d3d9a962c469f0f50b803dd2eb4",
+                "reference": "6d48bc3209c61d3d9a962c469f0f50b803dd2eb4",
                 "shasum": ""
             },
             "require": {
@@ -146,7 +146,7 @@
                 "routing",
                 "watoki"
             ],
-            "time": "2014-11-08 09:26:22"
+            "time": "2014-11-11 13:02:33"
         },
         {
             "name": "watoki/deli",
@@ -299,12 +299,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/watoki/qrator.git",
-                "reference": "864710d23d3d7cbf2c7fe9aae1ebeb0bb0fb9ae8"
+                "reference": "b86811085d4feb59b4c31004fbce2914981aba68"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/watoki/qrator/zipball/864710d23d3d7cbf2c7fe9aae1ebeb0bb0fb9ae8",
-                "reference": "864710d23d3d7cbf2c7fe9aae1ebeb0bb0fb9ae8",
+                "url": "https://api.github.com/repos/watoki/qrator/zipball/b86811085d4feb59b4c31004fbce2914981aba68",
+                "reference": "b86811085d4feb59b4c31004fbce2914981aba68",
                 "shasum": ""
             },
             "require": {
@@ -345,7 +345,7 @@
                 "source": "https://github.com/watoki/qrator/tree/master",
                 "issues": "https://github.com/watoki/qrator/issues"
             },
-            "time": "2014-11-10 07:49:04"
+            "time": "2014-11-11 18:56:36"
         },
         {
             "name": "watoki/smokey",

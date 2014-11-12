@@ -15,3 +15,6 @@ You need `PHP 5.5`, [composer] and [git]. Execute
     php -S localhost:8000 index.php
 
 then browse to `http://localhost:8000`
+
+[composer]: http://getcomposer.org
+[git]: http://git-scm.com

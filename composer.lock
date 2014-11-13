@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8ecd669805d3befd239afc564cb42939",
+    "hash": "17c2eff1b217d5aa30966b5a500d5b6d",
     "packages": [
         {
             "name": "nikic/php-parser",
@@ -298,14 +298,8 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/watoki/qrator.git",
-                "reference": "b86811085d4feb59b4c31004fbce2914981aba68"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/watoki/qrator/zipball/b86811085d4feb59b4c31004fbce2914981aba68",
-                "reference": "b86811085d4feb59b4c31004fbce2914981aba68",
-                "shasum": ""
+                "url": "/home/rtens/Dropbox/dev/php/watoki/qrator",
+                "reference": "dd3e766bbbc657c9c6f4c18131c704fa34d14606"
             },
             "require": {
                 "php": ">=5.4",
@@ -341,11 +335,7 @@
                 "cqrs",
                 "watoki"
             ],
-            "support": {
-                "source": "https://github.com/watoki/qrator/tree/master",
-                "issues": "https://github.com/watoki/qrator/issues"
-            },
-            "time": "2014-11-11 18:56:36"
+            "time": "2014-11-13 13:25:58"
         },
         {
             "name": "watoki/smokey",
@@ -397,12 +387,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/watoki/stores.git",
-                "reference": "792629cdf119cfd6c909d873aa6d0f73d5eda4f4"
+                "reference": "5e94011cbc48c0682008316260f0543384f8d02b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/watoki/stores/zipball/792629cdf119cfd6c909d873aa6d0f73d5eda4f4",
-                "reference": "792629cdf119cfd6c909d873aa6d0f73d5eda4f4",
+                "url": "https://api.github.com/repos/watoki/stores/zipball/5e94011cbc48c0682008316260f0543384f8d02b",
+                "reference": "5e94011cbc48c0682008316260f0543384f8d02b",
                 "shasum": ""
             },
             "require": {
@@ -439,7 +429,7 @@
                 "storage",
                 "watoki"
             ],
-            "time": "2014-11-06 12:57:33"
+            "time": "2014-11-13 10:56:18"
         },
         {
             "name": "watoki/tempan",

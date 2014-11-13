@@ -1,9 +1,11 @@
 <?php
 namespace blog\model\commands;
 
+use blog\model\UserId;
+
 class CreatePost {
 
-    /** @var \blog\model\User-ID|string */
+    /** @var \blog\model\UserId */
     public $author;
 
     /** @var string */
@@ -15,7 +17,7 @@ class CreatePost {
     /** @var array|\blog\model\Tag-ID[] */
     public $tags;
 
-    function __construct($author, $title, $content) {
+    function __construct(UserId $author, $title, $content) {
         $this->author = $author;
         $this->content = $content;
         $this->title = $title;

@@ -31,7 +31,7 @@ class PostRepository extends Repository {
         $blog = $this->read();
         $id = uniqid();
         $row = [
-            'author' => $command->author,
+            'author' => (string)$command->author,
             'date' => date('c'),
             'title' => $command->title,
             'content' => $command->content,
@@ -50,31 +50,29 @@ class PostRepository extends Repository {
 
     function updatePost(UpdatePost $command) {
         $blog = $this->read();
-        $blog['posts'][$command->id]['title'] = $command->title;
-        $blog['posts'][$command->id]['content'] = $command->content;
-        $blog['posts'][$command->id]['updated'] = date('c');
+        $blog['posts'][(string)$command->id]['title'] = $command->title;
+        $blog['posts'][(string)$command->id]['content'] = $command->content;
+        $blog['posts'][(string)$command->id]['updated'] = date('c');
         $this->write($blog);
     }
 
     function changeDate(ChangeDate $command) {
         $blog = $this->read();
-        $blog['posts'][$command->id]['date'] = $command->date->format('c');
+        $blog['posts'][(string)$command->id]['date'] = $command->date->format('c');
         $this->write($blog);
     }
 
     function deletePost(DeletePost $command) {
         $blog = $this->read();
-        unset($blog['posts'][$command->id]);
+        unset($blog['posts'][(string)$command->id]);
         $this->write($blog);
-
-        return "Deleted {$command->id}";
     }
 
     function removeTag(RemoveTag $command) {
         $blog = $this->read();
-        foreach ($blog['posts'][$command->post]['tags'] as $i => $tagId) {
+        foreach ($blog['posts'][(string)$command->post]['tags'] as $i => $tagId) {
             if ($tagId == $command->tag) {
-                unset($blog['posts'][$command->post]['tags'][$i]);
+                unset($blog['posts'][(string)$command->post]['tags'][$i]);
             }
         }
         $this->write($blog);
@@ -82,7 +80,7 @@ class PostRepository extends Repository {
 
     function addTag(AddTag $command) {
         $blog = $this->read();
-        $blog['posts'][$command->id]['tags'][] = $command->tag;
+        $blog['posts'][(string)$command->id]['tags'][] = $command->tag;
         $this->write($blog);
     }
 
@@ -98,7 +96,7 @@ class PostRepository extends Repository {
     }
 
     private function inflate($id, $row) {
-        $author = $this->users->readUserById($row['author']);
+        $author = $this->users->readUserById(new UserId($row['author']));
         $post = new Post($id, $author, $row['title'], $row['content'], new \DateTime($row['date']), new \DateTime(isset($row['updated']) ? $row['updated'] : $row['date']));
         if (isset($row['tags'])) {
             foreach ($row['tags'] as $tagId) {

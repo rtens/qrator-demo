@@ -3,7 +3,7 @@ namespace blog\model;
 
 class User {
 
-    /** @var string|User-ID */
+    /** @var UserId */
     public $id;
 
     /** @var string */
@@ -12,7 +12,7 @@ class User {
     /** @var string */
     public $email;
 
-    function __construct($id, $email, $name) {
+    function __construct(UserId $id, $email, $name) {
         $this->id = $id;
         $this->email = $email;
         $this->name = $name;

@@ -23,7 +23,7 @@ class UserRepository extends Repository {
         $blog = $this->read();
         $users = isset($blog['users']) ? $blog['users'] : [];
         array_walk($users, function (&$row, $id) {
-            $row = $this->inflate($id, $row);
+            $row = $this->inflate(new UserId($id), $row);
         });
         return array_values($users);
     }
@@ -35,21 +35,21 @@ class UserRepository extends Repository {
                 throw new \Exception("Cannot delete user who is author of post '{$post['title']}'.");
             }
         }
-        unset($blog['users'][$command->id]);
+        unset($blog['users'][(string)$command->id]);
         $this->write($blog);
         return "User deleted";
     }
 
-    public function readUserById($id) {
+    public function readUserById(UserId $id) {
         $blog = $this->read();
-        return $this->inflate($id, $blog['users'][$id]);
+        return $this->inflate($id, $blog['users'][(string)$id]);
     }
 
     public function readUser(ReadUser $query) {
-        return $this->readUserById($query->id);
+        return $this->readUserById(new UserId($query->id));
     }
 
-    private function inflate($id, $row) {
+    private function inflate(UserId $id, $row) {
         return new User($id, $row['email'], $row['name']);
     }
 

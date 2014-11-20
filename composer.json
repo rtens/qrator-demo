@@ -5,7 +5,7 @@
     "license" : "proprietary",
     "require": {
         "php": ">=5.5",
-        "watoki/qrator": "dev-keep_action_form"
+        "watoki/qrator": "*"
     },
     "authors" : [
         {
@@ -16,7 +16,7 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "/home/rtens/Dropbox/dev/php/watoki/qrator"
+            "url": "http://github.com/watoki/qrator.git"
         }
     ],
     "autoload": {

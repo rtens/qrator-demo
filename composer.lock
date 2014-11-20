@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c58441de4ff985c18464ef4586b96c6d",
+    "hash": "8ecd669805d3befd239afc564cb42939",
     "packages": [
         {
             "name": "nikic/php-parser",
@@ -296,11 +296,17 @@
         },
         {
             "name": "watoki/qrator",
-            "version": "dev-keep_action_form",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "/home/rtens/Dropbox/dev/php/watoki/qrator",
+                "url": "https://github.com/watoki/qrator.git",
                 "reference": "5ee46f3ef720eae32cbaf7bab825948a60a3e540"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/watoki/qrator/zipball/5ee46f3ef720eae32cbaf7bab825948a60a3e540",
+                "reference": "5ee46f3ef720eae32cbaf7bab825948a60a3e540",
+                "shasum": ""
             },
             "require": {
                 "php": ">=5.4",
@@ -337,6 +343,10 @@
                 "cqrs",
                 "watoki"
             ],
+            "support": {
+                "source": "https://github.com/watoki/qrator/tree/master",
+                "issues": "https://github.com/watoki/qrator/issues"
+            },
             "time": "2014-11-20 15:41:24"
         },
         {
@@ -345,12 +355,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/watoki/reflect.git",
-                "reference": "5479cf0c908321373abcb5c8056d917e39a7dbc3"
+                "reference": "365ad8de677aa18bbd11ca7c9e71ac29b983fcbe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/watoki/reflect/zipball/5479cf0c908321373abcb5c8056d917e39a7dbc3",
-                "reference": "5479cf0c908321373abcb5c8056d917e39a7dbc3",
+                "url": "https://api.github.com/repos/watoki/reflect/zipball/365ad8de677aa18bbd11ca7c9e71ac29b983fcbe",
+                "reference": "365ad8de677aa18bbd11ca7c9e71ac29b983fcbe",
                 "shasum": ""
             },
             "require": {
@@ -386,7 +396,7 @@
                 "type hints",
                 "watoki"
             ],
-            "time": "2014-11-17 13:58:32"
+            "time": "2014-11-20 13:18:18"
         },
         {
             "name": "watoki/smokey",
@@ -537,9 +547,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "watoki/qrator": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "platform": {
         "php": ">=5.5"

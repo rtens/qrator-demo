@@ -12,6 +12,12 @@ class UpdatePost {
     /** @var string */
     public $content;
 
+    function __construct($id, $title, $content) {
+        $this->content = $content;
+        $this->id = $id;
+        $this->title = $title;
+    }
+
     public function setId($id) {
         $this->id = $id;
     }

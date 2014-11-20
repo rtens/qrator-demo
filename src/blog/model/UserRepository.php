@@ -16,7 +16,7 @@ class UserRepository extends Repository {
         ];
         $blog['users'][$id] = $row;
         $this->write($blog);
-        return $this->inflate($id, $row);
+        return $this->inflate(new UserId($id), $row);
     }
 
     public function listUsers() {
@@ -37,7 +37,6 @@ class UserRepository extends Repository {
         }
         unset($blog['users'][(string)$command->id]);
         $this->write($blog);
-        return "User deleted";
     }
 
     public function readUserById(UserId $id) {

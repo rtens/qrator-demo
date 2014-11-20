@@ -45,6 +45,9 @@ class PostRepository extends Repository {
 
     function readPost(ReadPost $query) {
         $blog = $this->read();
+        if (!isset($blog['posts'][$query->id])) {
+            throw new \Exception("Post [{$query->id}] does not exist.");
+        }
         return $this->inflate($query->id, $blog['posts'][$query->id]);
     }
 

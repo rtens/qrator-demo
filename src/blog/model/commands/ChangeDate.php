@@ -9,4 +9,9 @@ class ChangeDate {
     /** @var \DateTime */
     public $date;
 
+    function __construct($id, $date) {
+        $this->date = $date;
+        $this->id = $id;
+    }
+
 } 

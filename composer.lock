@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8ecd669805d3befd239afc564cb42939",
+    "hash": "c58441de4ff985c18464ef4586b96c6d",
     "packages": [
         {
             "name": "nikic/php-parser",
@@ -296,17 +296,11 @@
         },
         {
             "name": "watoki/qrator",
-            "version": "dev-master",
+            "version": "dev-keep_action_form",
             "source": {
                 "type": "git",
-                "url": "https://github.com/watoki/qrator.git",
-                "reference": "24ca8a0565f4d03750508e22b81ab82f3a2887f2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/watoki/qrator/zipball/24ca8a0565f4d03750508e22b81ab82f3a2887f2",
-                "reference": "24ca8a0565f4d03750508e22b81ab82f3a2887f2",
-                "shasum": ""
+                "url": "/home/rtens/Dropbox/dev/php/watoki/qrator",
+                "reference": "5ee46f3ef720eae32cbaf7bab825948a60a3e540"
             },
             "require": {
                 "php": ">=5.4",
@@ -343,11 +337,7 @@
                 "cqrs",
                 "watoki"
             ],
-            "support": {
-                "source": "https://github.com/watoki/qrator/tree/master",
-                "issues": "https://github.com/watoki/qrator/issues"
-            },
-            "time": "2014-11-17 09:25:05"
+            "time": "2014-11-20 15:41:24"
         },
         {
             "name": "watoki/reflect",
@@ -547,7 +537,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "watoki/qrator": 20
+    },
     "prefer-stable": false,
     "platform": {
         "php": ">=5.5"

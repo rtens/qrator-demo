@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "a8ffc6fcfcbae268656c8acf1298e378ac1ee5f1"
+                "reference": "e26e63e9b011d23890a0986e209cf3dc95e0647a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/a8ffc6fcfcbae268656c8acf1298e378ac1ee5f1",
-                "reference": "a8ffc6fcfcbae268656c8acf1298e378ac1ee5f1",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/e26e63e9b011d23890a0986e209cf3dc95e0647a",
+                "reference": "e26e63e9b011d23890a0986e209cf3dc95e0647a",
                 "shasum": ""
             },
             "require": {
@@ -49,7 +49,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2014-11-04 22:12:46"
+            "time": "2014-11-13 19:25:52"
         },
         {
             "name": "watoki/collections",
@@ -102,12 +102,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/watoki/curir.git",
-                "reference": "6d48bc3209c61d3d9a962c469f0f50b803dd2eb4"
+                "reference": "0043c676b6144d48ed3310a0426f630890a62cee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/watoki/curir/zipball/6d48bc3209c61d3d9a962c469f0f50b803dd2eb4",
-                "reference": "6d48bc3209c61d3d9a962c469f0f50b803dd2eb4",
+                "url": "https://api.github.com/repos/watoki/curir/zipball/0043c676b6144d48ed3310a0426f630890a62cee",
+                "reference": "0043c676b6144d48ed3310a0426f630890a62cee",
                 "shasum": ""
             },
             "require": {
@@ -146,7 +146,7 @@
                 "routing",
                 "watoki"
             ],
-            "time": "2014-11-11 13:02:33"
+            "time": "2014-11-15 13:20:45"
         },
         {
             "name": "watoki/deli",
@@ -154,18 +154,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/watoki/deli.git",
-                "reference": "7cabba7df969cdaf46f62ce79c931319df868f05"
+                "reference": "bae3f795b5a831319440d8e27fc87d01f80d9273"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/watoki/deli/zipball/7cabba7df969cdaf46f62ce79c931319df868f05",
-                "reference": "7cabba7df969cdaf46f62ce79c931319df868f05",
+                "url": "https://api.github.com/repos/watoki/deli/zipball/bae3f795b5a831319440d8e27fc87d01f80d9273",
+                "reference": "bae3f795b5a831319440d8e27fc87d01f80d9273",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.4",
                 "watoki/collections": "*",
                 "watoki/factory": "*",
+                "watoki/reflect": "*",
                 "watoki/stores": "*"
             },
             "require-dev": {
@@ -197,7 +198,7 @@
                 "routing",
                 "watoki"
             ],
-            "time": "2014-10-30 15:56:22"
+            "time": "2014-11-15 10:51:51"
         },
         {
             "name": "watoki/dom",
@@ -252,17 +253,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/watoki/factory.git",
-                "reference": "fd66aba0dcb0d88f7d9e5d3faef0e10ea5eeef9f"
+                "reference": "449adb7b164ece16600584d082aa65cf6ab32da7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/watoki/factory/zipball/fd66aba0dcb0d88f7d9e5d3faef0e10ea5eeef9f",
-                "reference": "fd66aba0dcb0d88f7d9e5d3faef0e10ea5eeef9f",
+                "url": "https://api.github.com/repos/watoki/factory/zipball/449adb7b164ece16600584d082aa65cf6ab32da7",
+                "reference": "449adb7b164ece16600584d082aa65cf6ab32da7",
                 "shasum": ""
             },
             "require": {
-                "nikic/php-parser": "1.*",
-                "php": ">=5.3.8"
+                "php": ">=5.3.8",
+                "watoki/reflect": "*"
             },
             "require-dev": {
                 "watoki/scrut": "*"
@@ -291,7 +292,7 @@
                 "dependency injection",
                 "watoki"
             ],
-            "time": "2014-10-04 09:10:52"
+            "time": "2014-11-15 15:42:49"
         },
         {
             "name": "watoki/qrator",
@@ -299,18 +300,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/watoki/qrator.git",
-                "reference": "dd3e766bbbc657c9c6f4c18131c704fa34d14606"
+                "reference": "24ca8a0565f4d03750508e22b81ab82f3a2887f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/watoki/qrator/zipball/dd3e766bbbc657c9c6f4c18131c704fa34d14606",
-                "reference": "dd3e766bbbc657c9c6f4c18131c704fa34d14606",
+                "url": "https://api.github.com/repos/watoki/qrator/zipball/24ca8a0565f4d03750508e22b81ab82f3a2887f2",
+                "reference": "24ca8a0565f4d03750508e22b81ab82f3a2887f2",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.4",
                 "watoki/curir": "*",
                 "watoki/factory": "*",
+                "watoki/reflect": "*",
                 "watoki/tempan": "*"
             },
             "require-dev": {
@@ -345,7 +347,56 @@
                 "source": "https://github.com/watoki/qrator/tree/master",
                 "issues": "https://github.com/watoki/qrator/issues"
             },
-            "time": "2014-11-13 13:25:58"
+            "time": "2014-11-17 09:25:05"
+        },
+        {
+            "name": "watoki/reflect",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/watoki/reflect.git",
+                "reference": "5479cf0c908321373abcb5c8056d917e39a7dbc3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/watoki/reflect/zipball/5479cf0c908321373abcb5c8056d917e39a7dbc3",
+                "reference": "5479cf0c908321373abcb5c8056d917e39a7dbc3",
+                "shasum": ""
+            },
+            "require": {
+                "nikic/php-parser": "1.*",
+                "php": ">=5.3.8",
+                "watoki/collections": "*"
+            },
+            "require-dev": {
+                "watoki/scrut": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "watoki\\reflect": "src/",
+                    "spec\\watoki\\reflect": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nikolas Martens",
+                    "email": "Nikolas.M@rtens.org",
+                    "homepage": "http://rtens.org"
+                }
+            ],
+            "description": "Enhanced reflection capabilities for PHP",
+            "homepage": "http://github.com/watoki/reflect",
+            "keywords": [
+                "reflection",
+                "type hints",
+                "watoki"
+            ],
+            "time": "2014-11-17 13:58:32"
         },
         {
             "name": "watoki/smokey",
@@ -397,17 +448,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/watoki/stores.git",
-                "reference": "5e94011cbc48c0682008316260f0543384f8d02b"
+                "reference": "255087bdc6646bf7befab798240cee75f73c8aad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/watoki/stores/zipball/5e94011cbc48c0682008316260f0543384f8d02b",
-                "reference": "5e94011cbc48c0682008316260f0543384f8d02b",
+                "url": "https://api.github.com/repos/watoki/stores/zipball/255087bdc6646bf7befab798240cee75f73c8aad",
+                "reference": "255087bdc6646bf7befab798240cee75f73c8aad",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.4",
-                "watoki/collections": "*"
+                "watoki/collections": "*",
+                "watoki/reflect": "*"
             },
             "require-dev": {
                 "watoki/scrut": "*"
@@ -439,7 +491,7 @@
                 "storage",
                 "watoki"
             ],
-            "time": "2014-11-13 10:56:18"
+            "time": "2014-11-17 15:35:14"
         },
         {
             "name": "watoki/tempan",

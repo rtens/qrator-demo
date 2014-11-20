@@ -14,7 +14,7 @@ class CreatePost {
     /** @var string */
     public $content;
 
-    /** @var array|\blog\model\Tag-ID[] */
+    /** @var array|string[]|\blog\model\Tag-ID[] */
     public $tags;
 
     function __construct(UserId $author, $title, $content) {

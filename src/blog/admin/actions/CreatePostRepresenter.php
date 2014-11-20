@@ -8,7 +8,7 @@ use blog\model\queries\ReadPost;
 use watoki\qrator\form\fields\HtmlTextField;
 use watoki\qrator\representer\ActionLink;
 use watoki\qrator\representer\basic\BasicActionRepresenter;
-use watoki\qrator\representer\Property;
+use watoki\reflect\Property;
 
 class CreatePostRepresenter extends BasicActionRepresenter {
 

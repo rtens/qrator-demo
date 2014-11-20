@@ -3,7 +3,7 @@ namespace blog\model\commands;
 
 class ChangeDate {
 
-    /** @var \blog\model\Post-ID */
+    /** @var string|\blog\model\Post-ID */
     public $id;
 
     /** @var \DateTime */
